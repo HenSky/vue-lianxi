@@ -1,23 +1,23 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
-
 Vue.use(Router)
 
+import Home from "./views/home/home.vue"
+import Friend from "./views/friends/friend.vue"
+import Search from "./views/search/search.vue"
+import Cart from "./views/cart/cart.vue"
+import newslist from "./views/home/newList/newlist.vue"
+import newinfo from "./views/home/newList/newInfo/newinfo.vue"
+import photolist from "./views/home/photo/photolist.vue"
 export default new Router({
   routes: [
-    {
-      path: '/',
-      name: 'home',
-      component: Home
-    },
-    {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './views/About.vue')
-    }
+    { path: "/", redirect: "/home" },
+    { path: '/home', component: Home },
+    { path: "/home/newslist", component: newslist },
+    { path: "/home/newinfo/:id", component: newinfo },
+    { path: "/home/photolist", component: photolist },
+    { path: '/friend', component: Friend },
+    { path: "/search", component: Search },
+    { path: "/cart", component: Cart }
   ]
-})
+});
